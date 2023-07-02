@@ -36,7 +36,7 @@ import net.fabricmc.fabric.impl.resource.loader.GroupResourcePack;
 /**
  * Represents a vanilla built-in resource pack with support for modded content.
  *
- * <p>Vanilla resources are provided as usual through the original resource pack,
+ * <p>Vanilla resources are provided as usual through the original resource pack (if not overridden),
  * all other resources will be searched for in the provided modded resource packs.</p>
  */
 public class FabricWrappedVanillaResourcePack extends GroupResourcePack {
@@ -67,8 +67,8 @@ public class FabricWrappedVanillaResourcePack extends GroupResourcePack {
 
 	@Override
 	public void findResources(ResourceType type, String namespace, String prefix, ResultConsumer consumer) {
-		super.findResources(type, namespace, prefix, consumer);
 		this.originalResourcePack.findResources(type, namespace, prefix, consumer);
+		super.findResources(type, namespace, prefix, consumer);
 	}
 
 	@Override
